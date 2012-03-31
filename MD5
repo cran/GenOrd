@@ -1,0 +1,12 @@
+eefef2f7ef45c8124c777edd23c8b998 *DESCRIPTION
+a2b52f0651e8d9e88c134274fceffb9e *NAMESPACE
+c6eadd627830cb10278d24b896b72898 *R/contord.R
+f7947d3bc461b533145085ccdb496b83 *R/corrcheck.R
+2eb5d73c261513603a4f747ba4cb7cd7 *R/ordcont.R
+36c39274634720ce8a9702b5a8b7874b *R/ordsample.R
+33ae3748ff01c32f6a5f40b40eb0cdc8 *doc/GenOrd-manual.pdf
+74c35504fb51a4695d5435c1bf0e5514 *man/GenOrd-package.Rd
+0f1836c63e6e47a8e3c5b228864d0b55 *man/contord.Rd
+74676d50126d7889542fbee38e679927 *man/corrcheck.Rd
+c153083abca7b1eccad4bfb0b523a3d6 *man/ordcont.Rd
+8b62fa79c203ae7757183280eeecb3c3 *man/ordsample.Rd
