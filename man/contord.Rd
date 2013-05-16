@@ -25,7 +25,7 @@ if TRUE, the function finds Spearman's correlations (and it is not necessary to 
 }
 }
 \value{
-the correlation matrix among the discretized variables
+the correlation matrix of the discretized variables
 }
 \author{
 Alessandro Barbiero, Pier Alda Ferrari

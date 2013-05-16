@@ -4,7 +4,7 @@
 Checking correlations
 }
 \description{
-Function \eqn{corrcheck} returns the lower and upper bounds of the correlation coefficients of the ordinal/discrete variables given their marginal  distributions, i.e. returns the range of feasible pairwise correlations.
+The function returns the lower and upper bounds of the correlation coefficients of the ordinal/discrete variables given their marginal  distributions, i.e. returns the range of feasible pairwise correlations.
 }
 \usage{
 corrcheck(marginal, support = list(), Spearman = FALSE)
@@ -39,7 +39,7 @@ kj<-c(2,3,4,5)
 marginal<-list(0.4,c(0.6,0.9),c(0.1,0.2,0.4),c(0.6,0.7,0.8,0.9))
 corrcheck(marginal) # lower and upper bounds for Pearson's rho
 corrcheck(marginal,Spearman=TRUE) # lower and upper bounds for Spearman's rho
-# change the support
+# change the supports
 support<-list(c(0,1),c(1,2,4),c(1,2,3,4),c(0,1,2,5,10))
 corrcheck(marginal, support=support) # updated bounds
 }

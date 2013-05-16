@@ -4,7 +4,7 @@
 Drawing a sample of ordinal/discrete data
 }
 \description{
-The function draws a sample of given size from a multivariate ordinal/discrete variable with correlation matrix \code{Sigma} and pre-specified marginals \code{marginal}}
+The function draws a sample from a multivariate ordinal/discrete variable with correlation matrix \code{Sigma} and pre-specified marginals \code{marginal}}
 \usage{
 ordsample(n, marginal, Sigma, support=list(), Spearman=FALSE, cormat="ordinal")
 }
@@ -26,7 +26,7 @@ a list of k elements, where k is the number of variables. The i-th element of su
 if TRUE, the function finds Spearman's correlations (and it is not necessary to prvide \code{support}), if FALSE (default) Pearson's correlations 
 }
   \item{cormat}{
-"ordinal" if the Sigma in input is the target correlation matrix of ordinal/discrete variables; "continuous" if the Sigma in input is the intermediate correlation matrix of the multivariate standard normal to be discretized
+\code{ordinal} if the Sigma in input is the target correlation matrix of ordinal/discrete variables; \code{continuous} if the Sigma in input is the intermediate correlation matrix of the multivariate standard normal
 }
 }
 \value{
@@ -48,21 +48,40 @@ k<-2
 marginal<-list(c(0.1,0.3,0.6),c(0.4,0.7,0.9))
 corrcheck(marginal) # check ok
 Sigma<-matrix(c(1,0.6,0.6,1),2,2)
-# sample size 100
-n<-500
+# sample size 1000
+n<-1000
 # generate a sample of size n
 m<-ordsample(n, marginal, Sigma)
 head(m)
 # sample correlation matrix
 cor(m) # compare it with Sigma
-table(m[,1])/sum(table(m[,1]))
-table(m[,2])/sum(table(m[,2])) # compare it with the two marginal distributions
+cumsum(table(m[,1]))/n
+cumsum(table(m[,2]))/n # compare it with the two marginal distributions
+
+# Example 1bis
+
+# draw a sample from a bivariate ordinal variable
+# with 4 of categories and asymmetrical marginal distributions
+# and Spearman correlation coefficient 0.6 (to be checked)
+k<-2
+marginal<-list(c(0.1,0.3,0.6),c(0.4,0.7,0.9))
+corrcheck(marginal, Spearman=TRUE) # check ok
+Sigma<-matrix(c(1,0.6,0.6,1),2,2)
+# sample size 1000
+n<-1000
+# generate a sample of size n
+m<-ordsample(n, marginal, Sigma, Spearman=TRUE)
+head(m)
+# sample correlation matrix
+cor(rank(m[,1]),rank(m[,2])) # compare it with Sigma
+cumsum(table(m[,1]))/n
+cumsum(table(m[,2]))/n # compare it with the two marginal distributions
 
 # Example 2
 
 # draw a sample from a 4-dimensional ordinal variable
-# with different number of categories
-# and uniform marginal distributions, and different correlation coefficients
+# with different number of categories and uniform marginal distributions
+# and different correlation coefficients
 k<-4
 marginal<-list(0.5,c(1/3,2/3),c(1/4,2/4,3/4),c(1/5,2/5,3/5,4/5))
 corrcheck(marginal)
@@ -76,7 +95,7 @@ set.seed(1)
 m<-ordsample(n, marginal, Sigma)
 # sample correlation matrix
 cor(m) # compare it with Sigma
-table(m[,4]) # compare it with the fourth marginal
+cumsum(table(m[,4]))/n # compare it with the fourth marginal
 head(m)
 # or equivalently...
 set.seed(1)
@@ -84,10 +103,6 @@ res<-ordcont(marginal, Sigma)
 res[[1]] # the intermediate correlation matrix of the multivariate normal
 m<-ordsample(n, marginal, res[[1]], cormat="continuous")
 head(m)
-# increasing n, the sample correlations get close to
-# the theoretical correlations
-# and the empirical marginal distributions get closer to
-# the theoretical marginal distribution
 }
 \keyword{htest}
 \keyword{models}

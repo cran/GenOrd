@@ -1,10 +1,10 @@
 \name{ordcont}
 \alias{ordcont}
 \title{
-computes the "intermediate" correlation matrix for the multivariate standard normal in order to achieve the "target" correlation matrix for the discretized variables
+computes the "intermediate" correlation matrix for the multivariate standard normal in order to achieve the "target" correlation matrix for the ordinal/discrete variables
 }
 \description{
-The function computes the correlation matrix of the k-dimensional standard normal r.v. yielding the desired correlation matrix identified by \code{Sigma} for the k-dimensional r.v. with desired marginal distributions \code{marginal}
+The function computes the correlation matrix of the k-dimensional standard normal r.v. yielding the desired correlation matrix \code{Sigma} for the k-dimensional r.v. with desired marginal distributions \code{marginal}
 }
 \usage{
 ordcont(marginal,Sigma,support=list(),Spearman=FALSE,epsilon=1e-06,maxit=100)
@@ -36,7 +36,7 @@ a list of four elements
 the correlation matrix of the multivariate standard normal variable
 }
   \item{SigmaO}{
-the actual correlation matrix of the discretized variables (it should approximately coincide with the target correlation matrix in input!)
+the actual correlation matrix of the discretized variables (it should approximately coincide with the target correlation matrix \code{Sigma})
 }
   \item{Sigma}{
 the target correlation matrix of the ordinal/discrete variables
@@ -52,7 +52,7 @@ the actual maximum error (the absolute maximum deviation between actual and targ
 Alessandro Barbiero, Pier Alda Ferrari
 }
 \note{
-The value of the maximum tolerated absolute error \eqn{epsilon} on the elements of the correlation matrix for ordinal r.v. can be set by the user: a value between 0.000001 and 0.01 seems to be an acceptable compromise assuring both the precision of the results and the convergence of the algorithm; moreover, a maximum number of iteration can be chosen (\eqn{maxit}), in order to avoid possible endless loops in case of non-convergence
+The value of the maximum tolerated absolute error \code{epsilon} on the elements of the correlation matrix for ordinal r.v. can be set by the user: a value between 0.000001 and 0.01 seems to be an acceptable compromise assuring both the precision of the results and the convergence of the algorithm; moreover, a maximum number of iteration can be chosen (\code{maxit}), in order to avoid possible endless loops in case of non-convergence
 }
 
 \seealso{
