@@ -15,8 +15,8 @@ This version has fixed some inconsistencies regarding Spearman correlation coeff
 \tabular{ll}{
 Package: \tab GenOrd\cr
 Type: \tab Package\cr
-Version: \tab 1.1.0\cr
-Date: \tab 2012-05-16\cr
+Version: \tab 1.2.0\cr
+Date: \tab 2014-03-28\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }

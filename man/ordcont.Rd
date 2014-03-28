@@ -27,7 +27,7 @@ if TRUE, the function finds Spearman's correlations (and it is not necessary to 
 the maximum tolerated error among target and actual correlations
 }
   \item{maxit}{
-the maximum number of iterations of the algorithm
+the maximum number of iterations allowed for the algorithm
 }
 }
 \value{
@@ -42,7 +42,7 @@ the actual correlation matrix of the discretized variables (it should approximat
 the target correlation matrix of the ordinal/discrete variables
 }
   \item{niter}{
-the number of iterations performed
+a matrix containing the number of iterations performed by the algorithm, one for each pair of variables
 }
   \item{maxerr}{
 the actual maximum error (the absolute maximum deviation between actual and target correlations of the ordinal/discrete variables)
@@ -52,9 +52,12 @@ the actual maximum error (the absolute maximum deviation between actual and targ
 Alessandro Barbiero, Pier Alda Ferrari
 }
 \note{
+For some choices of \code{marginal} and \code{Sigma}, the algorithm may not provide a feasible correlation matrix \code{SigmaC}. In this case, a warning is issued and the function supplies as \code{SigmaC} - just for consistency - the nearest correlation matrix, according to the algorithm discussed in Higham (2002). Obviuously, the corresponding \code{SigmaO} may sensibly differ from \code{Sigma}.
 The value of the maximum tolerated absolute error \code{epsilon} on the elements of the correlation matrix for ordinal r.v. can be set by the user: a value between 0.000001 and 0.01 seems to be an acceptable compromise assuring both the precision of the results and the convergence of the algorithm; moreover, a maximum number of iteration can be chosen (\code{maxit}), in order to avoid possible endless loops in case of non-convergence
 }
-
+\references{
+N. Higham (2002) Computing the nearest correlation matrix: A problem from finance, IMA Journal of Numerical Analysis, 22, 329-343.
+}
 \seealso{
 \code{\link{contord}}, \code{\link{ordsample}}, \code{\link{corrcheck}}
 }
@@ -83,6 +86,8 @@ res[[1]]
 Sigma[1,2]<--0.2
 Sigma[2,1]<-Sigma[1,2]
 Sigma
+# checking whether Sigma is still positive definite
+eigen(Sigma)$values # all >0, OK
 res<-ordcont(marginal, Sigma)
 res[[1]]
 }
