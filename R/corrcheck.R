@@ -1,5 +1,6 @@
 corrcheck<-function (marginal, support = list(), Spearman = FALSE) 
 {
+    if (!all(unlist(lapply(marginal, function(x) (sort(x)==x & min(x)>0 & max(x)<1))))) stop("Error in assigning marginal distributions!")
     k <- length(marginal)
     mcmax <- diag(1, k)
     mcmin <- diag(1, k)
