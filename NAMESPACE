@@ -1,2 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-import(mvtnorm, Matrix, MASS)
+import(stats, mvtnorm, Matrix, MASS)

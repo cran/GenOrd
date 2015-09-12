@@ -4,7 +4,7 @@
 Checking correlations for feasibility
 }
 \description{
-The function returns the lower and upper bounds of the correlation coefficients of each pair of ordinal/discrete variables given their marginal distributions, i.e., returns the range of feasible bivariate correlations.
+The function returns the lower and upper bounds of the correlation coefficients of each pair of discrete variables given their marginal distributions, i.e., returns the range of feasible bivariate correlations.
 }
 \usage{
 corrcheck(marginal, support = list(), Spearman = FALSE)
@@ -12,10 +12,10 @@ corrcheck(marginal, support = list(), Spearman = FALSE)
 \arguments{
   \item{marginal}{
 a list of \eqn{k} elements, where \eqn{k} is the number of variables.
-The \eqn{i}-th element of \code{marginal} is the vector of the cumulative probabilities defining the marginal distribution of the \eqn{i}-th component of the  multivariate variable. If the \eqn{i}-th component has \eqn{k_i} categories, the \eqn{i}-th element of \code{marginal} will contain \eqn{k_i-1} probabilities (the \eqn{k_i}-th is obviously 1 and shall not be included).
+The \eqn{i}-th element of \code{marginal} is the vector of the cumulative probabilities defining the marginal distribution of the \eqn{i}-th component of the  multivariate variable. If the \eqn{i}-th component can take \eqn{k_i} values, the \eqn{i}-th element of \code{marginal} will contain \eqn{k_i-1} probabilities (the \eqn{k_i}-th is obviously 1 and shall not be included).
 }
   \item{support}{
-a list of \eqn{k} elements, where \eqn{k} is the number of variables. The \eqn{i}-th element of support contains the ordered values of the support of the \eqn{i}-th variable. By default, the support of the \eqn{i}-th variable is \eqn{1,2,...,k_i}
+a list of \eqn{k} elements, where \eqn{k} is the number of variables. The \eqn{i}-th element of \code{support} is the vector containing the ordered values of the support of the \eqn{i}-th variable. By default, the support of the \eqn{i}-th variable is \eqn{1,2,...,k_i}
 }
   \item{Spearman}{
 \code{TRUE} if we consider Spearman's correlation, \code{FALSE} (default) if we consider Pearson's correlation

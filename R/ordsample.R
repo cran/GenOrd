@@ -1,5 +1,5 @@
 ordsample <-
-function(n, marginal, Sigma, support=list(), Spearman=FALSE, cormat="ordinal")
+function(n, marginal, Sigma, support=list(), Spearman=FALSE, cormat="discrete")
 {
     if (!all(unlist(lapply(marginal, function(x) (sort(x)==x & min(x)>0 & max(x)<1))))) stop("Error in assigning marginal distributions!")
     if(!isSymmetric(Sigma) | min(eigen(Sigma)$values)<0 | !all(diag(Sigma)==1)) stop("Correlation matrix not valid!")
@@ -16,7 +16,7 @@ if(len==0)
 support[[i]] <- 1:kj[i]
 }
 }
-if(cormat=="ordinal")
+if(cormat=="discrete")
 {
 Sigmac <- ordcont(marginal=marginal, Sigma=Sigma, support=support, Spearman=Spearman)[[1]]
 Sigma <- Sigmac
